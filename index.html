@@ -870,14 +870,14 @@
 
   <!-- Announcement Bar -->
   <div class="announcement">
-    🚀 Early Access is open — Register now and be first to get your login before we go public. <a href="#register">Claim
-      Your Spot →</a>
+    🚀 Early Access is open — Register now and be first to get your login before we go public. <a
+      href="https://forms.gle/RUNuXX4wNiXus3CL8" target="_blank">Claim Your Spot →</a>
   </div>
 
   <!-- NAV -->
   <nav>
     <div class="logo">Nirvi<span>Sha</span></div>
-    <a href="#register" class="nav-cta">Get Early Access</a>
+    <a href="https://forms.gle/RUNuXX4wNiXus3CL8" target="_blank" class="nav-cta">Get Early Access</a>
   </nav>
 
   <!-- HERO -->
@@ -891,7 +891,8 @@
         GST reconciliation, and ITC reports — without a single phone call or manual data entry.
       </p>
       <div class="hero-btns">
-        <a href="#register" class="btn-primary">🚀 Get Early Access — ₹2,499/mo</a>
+        <a href="https://forms.gle/RUNuXX4wNiXus3CL8" target="_blank" class="btn-primary">🚀 Register for Early
+          Access</a>
         <a href="#features" class="btn-secondary">See All Features ↓</a>
       </div>
       <div class="hero-stats">
@@ -1109,38 +1110,6 @@
     </div>
   </section>
 
-  <!-- PRICING -->
-  <section class="pricing-bg" id="pricing">
-    <div class="fade-up" style="text-align:center; margin-bottom:50px;">
-      <span class="section-tag">Pricing</span>
-      <h2>Simple, Transparent Pricing</h2>
-      <p class="section-sub" style="margin:0 auto;">One flat price. Unlimited clients. Unlimited staff. No per-user
-        pricing nonsense.</p>
-    </div>
-    <div class="pricing-grid">
-      <div class="price-card featured">
-        <div class="price-label">Early Access</div>
-        <div style="font-size:2rem; font-weight:900; margin:16px 0; letter-spacing:-1px;">Be First In 🚀</div>
-        <div class="price-period">Register now · Get your login before public launch</div>
-        <div style="font-size:0.82rem; color:var(--muted); margin-bottom:24px;">No pricing commitment required. Try it
-          free on day one.</div>
-        <ul class="price-features">
-          <li><span class="check">✓</span>Early login access before public launch</li>
-          <li><span class="check">✓</span>Unlimited clients</li>
-          <li><span class="check">✓</span>Unlimited staff accounts</li>
-          <li><span class="check">✓</span>WhatsApp bot (dedicated number)</li>
-          <li><span class="check">✓</span>All 10 current features</li>
-          <li><span class="check">✓</span>Tally XML export</li>
-          <li><span class="check">✓</span>GSTR-2B reconciliation</li>
-          <li><span class="check">✓</span>ITC matching dashboard</li>
-          <li><span class="check">✓</span>Every new feature as it ships</li>
-          <li><span class="check">✓</span>Direct WhatsApp support from founders</li>
-        </ul>
-        <a href="#register" class="btn-primary" style="width:100%; justify-content:center;">Get Early Access →</a>
-      </div>
-    </div>
-  </section>
-
   <!-- FAQ -->
   <section>
     <div class="fade-up" style="margin-bottom:40px;">
@@ -1191,24 +1160,17 @@
     </div>
   </section>
 
-  <!-- REGISTER / EARLY ACCESS FORM -->
+  <!-- REGISTER / EARLY ACCESS -->
   <section id="register" style="padding: 80px 5%;">
     <div class="form-section fade-up">
       <span class="section-tag">Early Access</span>
       <h2>Get Your Login Before We Launch 🚀</h2>
-      <p>Register now and we will reach you on WhatsApp within 2 hours with your early access login details.</p>
-      <div class="form-row">
-        <input type="text" class="form-input" placeholder="Your Name" id="name" />
-        <input type="text" class="form-input" placeholder="CA Firm Name" id="firm" />
-      </div>
-      <div class="form-row" style="margin-top:12px;">
-        <input type="email" class="form-input" placeholder="Email Address" id="email" />
-        <input type="tel" class="form-input" placeholder="WhatsApp Number" id="phone" />
-      </div>
-      <div style="margin-top:16px;">
-        <button class="btn-primary" style="font-size:1rem; padding:16px 40px;" onclick="submitForm()">
-          🚀 Register for Early Access
-        </button>
+      <p>Fill our quick form — we will reach you on WhatsApp within 2 hours with your early access login details.</p>
+      <div style="margin-top:28px;">
+        <a href="https://forms.gle/RUNuXX4wNiXus3CL8" target="_blank" class="btn-primary"
+          style="font-size:1rem; padding:16px 40px;">
+          � Register on Google Form
+        </a>
       </div>
       <p class="form-note">✅ No credit card · No commitment · We will WhatsApp your login details within 2 hours</p>
     </div>
@@ -1258,31 +1220,6 @@
 
     document.querySelectorAll('.fade-up, .stagger').forEach(el => observer.observe(el));
 
-    // ── Form submission ──
-    function submitForm() {
-      const name = document.getElementById('name').value.trim();
-      const firm = document.getElementById('firm').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const phone = document.getElementById('phone').value.trim();
-
-      if (!name || !firm || !email || !phone) {
-        alert('Please fill in all fields to register.');
-        return;
-      }
-
-      // Replace YOUR_GOOGLE_FORM_ID with your actual Google Form ID
-      const FORM_URL = 'https://docs.google.com/forms/d/e/YOUR_GOOGLE_FORM_ID/formResponse';
-
-      // Open WhatsApp as fallback (always works, no form setup needed)
-      const msg = `Hi! I want early access to NirviSha.\n\nName: ${name}\nFirm: ${firm}\nEmail: ${email}\nPhone: ${phone}`;
-      window.open(`https://wa.me/919619424714?text=${encodeURIComponent(msg)}`, '_blank');
-
-      // Thank you message
-      const btn = event.target;
-      btn.textContent = '✅ Registered! We will WhatsApp you shortly.';
-      btn.style.background = 'linear-gradient(135deg, #059669, #10B981)';
-      btn.disabled = true;
-    }
   </script>
 
 </body>
