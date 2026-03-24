@@ -1,15 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NirviSha — AI-Powered CA Practice Automation</title>
-  <meta name="description" content="NirviSha automates your CA practice via WhatsApp. Receipt OCR, Bank Statement extraction, Tally export, GSTR-2B reconciliation and ITC matching — all from one dashboard." />
+  <meta name="description"
+    content="NirviSha automates your CA practice via WhatsApp. Receipt OCR, Bank Statement extraction, Tally export, GSTR-2B reconciliation and ITC matching — all from one dashboard." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     :root {
       --bg: #060B18;
@@ -23,11 +32,13 @@
       --red: #EF4444;
       --text: #F1F5F9;
       --muted: #94A3B8;
-      --border: rgba(99,102,241,0.18);
-      --card: rgba(255,255,255,0.04);
+      --border: rgba(99, 102, 241, 0.18);
+      --card: rgba(255, 255, 255, 0.04);
     }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       font-family: 'Inter', sans-serif;
@@ -43,680 +54,1237 @@
       position: fixed;
       inset: 0;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
-      pointer-events: none; z-index: 0; opacity: 0.4;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
     }
 
     /* ── NAV ── */
     nav {
-      position: fixed; top: 0; width: 100%; z-index: 100;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
       backdrop-filter: blur(16px);
-      background: rgba(6,11,24,0.85);
+      background: rgba(6, 11, 24, 0.85);
       border-bottom: 1px solid var(--border);
       padding: 0 5%;
-      display: flex; align-items: center; justify-content: space-between;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       height: 64px;
     }
+
     .logo {
-      font-size: 1.35rem; font-weight: 800; letter-spacing: -0.5px;
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
       background: linear-gradient(135deg, #818CF8, #C084FC);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
-    .logo span { color: var(--amber); -webkit-text-fill-color: var(--amber); }
+
+    .logo span {
+      color: var(--amber);
+      -webkit-text-fill-color: var(--amber);
+    }
+
     .nav-cta {
-      background: var(--indigo); color: #fff;
-      padding: 9px 22px; border-radius: 8px; font-size: 0.82rem; font-weight: 600;
-      text-decoration: none; transition: all 0.2s; border: none; cursor: pointer;
+      background: var(--indigo);
+      color: #fff;
+      padding: 9px 22px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+      border: none;
+      cursor: pointer;
     }
-    .nav-cta:hover { background: #4F46E5; transform: translateY(-1px); }
+
+    .nav-cta:hover {
+      background: #4F46E5;
+      transform: translateY(-1px);
+    }
 
     /* ── HERO ── */
     .hero {
       min-height: 100vh;
-      display: flex; align-items: center; justify-content: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
       padding: 100px 5% 60px;
       position: relative;
     }
+
     .hero-glow {
-      position: absolute; top: 10%; left: 50%; transform: translateX(-50%);
-      width: 700px; height: 500px; border-radius: 50%;
-      background: radial-gradient(ellipse, rgba(99,102,241,0.18) 0%, transparent 70%);
+      position: absolute;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(99, 102, 241, 0.18) 0%, transparent 70%);
       pointer-events: none;
     }
+
     .badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(99,102,241,0.12); border: 1px solid rgba(99,102,241,0.3);
-      color: var(--indigo-light); border-radius: 100px;
-      padding: 6px 16px; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.5px;
-      margin-bottom: 24px; text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(99, 102, 241, 0.12);
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      color: var(--indigo-light);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      margin-bottom: 24px;
+      text-transform: uppercase;
     }
-    .badge::before { content: '●'; color: var(--green); font-size: 0.6rem; animation: pulse 2s infinite; }
-    @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.3; } }
+
+    .badge::before {
+      content: '●';
+      color: var(--green);
+      font-size: 0.6rem;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.3;
+      }
+    }
 
     h1 {
       font-size: clamp(2.2rem, 6vw, 4.2rem);
-      font-weight: 900; letter-spacing: -2px; line-height: 1.08;
+      font-weight: 900;
+      letter-spacing: -2px;
+      line-height: 1.08;
       margin-bottom: 20px;
     }
+
     h1 .grad {
       background: linear-gradient(135deg, #818CF8 0%, #C084FC 50%, #F472B6 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
+
     .hero-sub {
-      font-size: clamp(1rem, 2.5vw, 1.2rem); color: var(--muted);
-      max-width: 620px; margin: 0 auto 36px; font-weight: 400; line-height: 1.7;
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      color: var(--muted);
+      max-width: 620px;
+      margin: 0 auto 36px;
+      font-weight: 400;
+      line-height: 1.7;
     }
-    .hero-sub strong { color: var(--text); font-weight: 600; }
 
-    .hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-    .btn-primary {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: linear-gradient(135deg, var(--indigo), var(--violet));
-      color: #fff; padding: 14px 32px; border-radius: 10px;
-      font-size: 0.95rem; font-weight: 700; text-decoration: none;
-      box-shadow: 0 0 40px rgba(99,102,241,0.35);
-      transition: all 0.25s; border: none; cursor: pointer;
+    .hero-sub strong {
+      color: var(--text);
+      font-weight: 600;
     }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 60px rgba(99,102,241,0.5); }
-    .btn-secondary {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: transparent; border: 1px solid var(--border);
-      color: var(--text); padding: 14px 28px; border-radius: 10px;
-      font-size: 0.95rem; font-weight: 600; text-decoration: none;
-      transition: all 0.25s; cursor: pointer;
-    }
-    .btn-secondary:hover { border-color: var(--indigo-light); background: rgba(99,102,241,0.08); }
 
-    .hero-stats {
-      display: flex; justify-content: center; gap: 40px; margin-top: 60px;
+    .hero-btns {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
       flex-wrap: wrap;
     }
-    .stat { text-align: center; }
-    .stat-num { font-size: 1.8rem; font-weight: 800; color: var(--indigo-light); }
-    .stat-label { font-size: 0.75rem; color: var(--muted); font-weight: 500; margin-top: 2px; }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, var(--indigo), var(--violet));
+      color: #fff;
+      padding: 14px 32px;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 0 40px rgba(99, 102, 241, 0.35);
+      transition: all 0.25s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 60px rgba(99, 102, 241, 0.5);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 14px 28px;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.25s;
+      cursor: pointer;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--indigo-light);
+      background: rgba(99, 102, 241, 0.08);
+    }
+
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 60px;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-num {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--indigo-light);
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--muted);
+      font-weight: 500;
+      margin-top: 2px;
+    }
 
     /* ── SECTION COMMONS ── */
-    section { padding: 90px 5%; position: relative; }
-    .section-tag {
-      display: inline-block; font-size: 0.7rem; font-weight: 700;
-      text-transform: uppercase; letter-spacing: 1.5px; color: var(--indigo-light);
-      margin-bottom: 14px; background: rgba(99,102,241,0.1);
-      padding: 4px 12px; border-radius: 4px;
+    section {
+      padding: 90px 5%;
+      position: relative;
     }
+
+    .section-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--indigo-light);
+      margin-bottom: 14px;
+      background: rgba(99, 102, 241, 0.1);
+      padding: 4px 12px;
+      border-radius: 4px;
+    }
+
     h2 {
       font-size: clamp(1.6rem, 4vw, 2.6rem);
-      font-weight: 800; letter-spacing: -1px; margin-bottom: 14px; line-height: 1.2;
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 14px;
+      line-height: 1.2;
     }
+
     .section-sub {
-      color: var(--muted); font-size: 1rem; max-width: 560px; line-height: 1.7; margin-bottom: 50px;
+      color: var(--muted);
+      font-size: 1rem;
+      max-width: 560px;
+      line-height: 1.7;
+      margin-bottom: 50px;
     }
 
     /* ── PROBLEM ── */
-    .problem { background: var(--bg2); }
+    .problem {
+      background: var(--bg2);
+    }
+
     .pain-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
     }
+
     .pain-card {
-      background: rgba(239,68,68,0.07); border: 1px solid rgba(239,68,68,0.2);
-      border-radius: 14px; padding: 22px 24px;
-      font-size: 0.95rem; color: #FCA5A5; line-height: 1.6;
+      background: rgba(239, 68, 68, 0.07);
+      border: 1px solid rgba(239, 68, 68, 0.2);
+      border-radius: 14px;
+      padding: 22px 24px;
+      font-size: 0.95rem;
+      color: #FCA5A5;
+      line-height: 1.6;
     }
-    .pain-card .emoji { font-size: 1.5rem; display: block; margin-bottom: 10px; }
+
+    .pain-card .emoji {
+      font-size: 1.5rem;
+      display: block;
+      margin-bottom: 10px;
+    }
 
     /* ── HOW IT WORKS ── */
     .steps {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 2px; position: relative;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2px;
+      position: relative;
     }
+
     .step {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 16px; padding: 32px 28px; position: relative; overflow: hidden;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px 28px;
+      position: relative;
+      overflow: hidden;
       transition: border-color 0.3s;
     }
-    .step:hover { border-color: var(--indigo); }
+
+    .step:hover {
+      border-color: var(--indigo);
+    }
+
     .step-num {
-      font-size: 3.5rem; font-weight: 900; line-height: 1;
-      background: linear-gradient(135deg, rgba(99,102,241,0.25), rgba(124,58,237,0.1));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      font-size: 3.5rem;
+      font-weight: 900;
+      line-height: 1;
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.25), rgba(124, 58, 237, 0.1));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       margin-bottom: 16px;
     }
-    .step h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; }
-    .step p { color: var(--muted); font-size: 0.88rem; line-height: 1.65; }
+
+    .step h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .step p {
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.65;
+    }
 
     /* ── FEATURES ── */
-    .features-bg { background: var(--bg2); }
-    .features-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 16px;
+    .features-bg {
+      background: var(--bg2);
     }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 16px;
+    }
+
     .feature-card {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 16px; padding: 28px; transition: all 0.25s; position: relative;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      transition: all 0.25s;
+      position: relative;
       overflow: hidden;
     }
+
     .feature-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
       background: linear-gradient(90deg, var(--indigo), var(--violet));
-      opacity: 0; transition: opacity 0.3s;
+      opacity: 0;
+      transition: opacity 0.3s;
     }
-    .feature-card:hover { border-color: rgba(99,102,241,0.4); transform: translateY(-3px); }
-    .feature-card:hover::before { opacity: 1; }
+
+    .feature-card:hover {
+      border-color: rgba(99, 102, 241, 0.4);
+      transform: translateY(-3px);
+    }
+
+    .feature-card:hover::before {
+      opacity: 1;
+    }
+
     .feature-icon {
-      font-size: 1.8rem; margin-bottom: 14px; display: block;
-      width: 48px; height: 48px; display: flex; align-items: center; justify-content: center;
-      background: rgba(99,102,241,0.1); border-radius: 10px;
+      font-size: 1.8rem;
+      margin-bottom: 14px;
+      display: block;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(99, 102, 241, 0.1);
+      border-radius: 10px;
     }
-    .feature-card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 8px; }
-    .feature-card p { color: var(--muted); font-size: 0.84rem; line-height: 1.65; }
+
+    .feature-card h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .feature-card p {
+      color: var(--muted);
+      font-size: 0.84rem;
+      line-height: 1.65;
+    }
+
     .feature-live {
-      display: inline-block; margin-top: 12px;
-      font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
-      color: var(--green); background: rgba(16,185,129,0.1);
-      border: 1px solid rgba(16,185,129,0.25); border-radius: 4px; padding: 2px 8px;
+      display: inline-block;
+      margin-top: 12px;
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--green);
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      border-radius: 4px;
+      padding: 2px 8px;
     }
+
     .feature-soon {
-      display: inline-block; margin-top: 12px;
-      font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
-      color: var(--amber); background: rgba(245,158,11,0.1);
-      border: 1px solid rgba(245,158,11,0.25); border-radius: 4px; padding: 2px 8px;
+      display: inline-block;
+      margin-top: 12px;
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--amber);
+      background: rgba(245, 158, 11, 0.1);
+      border: 1px solid rgba(245, 158, 11, 0.25);
+      border-radius: 4px;
+      padding: 2px 8px;
     }
 
     /* ── DIFFERENTIATOR ── */
     .diff-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
     }
-    @media (max-width: 640px) { .diff-grid { grid-template-columns: 1fr; } }
+
+    @media (max-width: 640px) {
+      .diff-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
     .diff-card {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 16px; padding: 30px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 30px;
     }
-    .diff-card h3 { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; color: var(--muted); }
-    .diff-row { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 12px; font-size: 0.88rem; }
-    .diff-row .icon { flex-shrink: 0; font-size: 1rem; margin-top: 1px; }
-    .diff-row span { color: var(--muted); line-height: 1.5; }
-    .diff-highlight { color: var(--text) !important; font-weight: 500; }
+
+    .diff-card h3 {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+      color: var(--muted);
+    }
+
+    .diff-row {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      margin-bottom: 12px;
+      font-size: 0.88rem;
+    }
+
+    .diff-row .icon {
+      flex-shrink: 0;
+      font-size: 1rem;
+      margin-top: 1px;
+    }
+
+    .diff-row span {
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .diff-highlight {
+      color: var(--text) !important;
+      font-weight: 500;
+    }
 
     /* ── PRICING ── */
-    .pricing-bg { background: var(--bg2); }
-    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; max-width: 800px; margin: 0 auto; }
-    .price-card {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 20px; padding: 36px; text-align: center;
+    .pricing-bg {
+      background: var(--bg2);
     }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .price-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 36px;
+      text-align: center;
+    }
+
     .price-card.featured {
       border-color: var(--indigo);
-      background: linear-gradient(145deg, rgba(99,102,241,0.1), rgba(124,58,237,0.08));
-      position: relative; overflow: hidden;
+      background: linear-gradient(145deg, rgba(99, 102, 241, 0.1), rgba(124, 58, 237, 0.08));
+      position: relative;
+      overflow: hidden;
     }
+
     .price-card.featured::before {
-      content: '🔥 EARLY BIRD — Limited 15 Spots';
-      position: absolute; top: 16px; left: 50%; transform: translateX(-50%);
-      background: linear-gradient(135deg, var(--amber), #F97316);
-      color: #000; font-size: 0.65rem; font-weight: 800;
-      padding: 4px 14px; border-radius: 100px; white-space: nowrap; letter-spacing: 0.5px;
+      content: '� Early Login Access — Limited Spots';
+      position: absolute;
+      top: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, var(--indigo), var(--violet));
+      color: #fff;
+      font-size: 0.65rem;
+      font-weight: 800;
+      padding: 4px 14px;
+      border-radius: 100px;
+      white-space: nowrap;
+      letter-spacing: 0.5px;
     }
-    .price-card.featured { padding-top: 52px; }
-    .price-label { font-size: 0.8rem; font-weight: 600; color: var(--muted); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
-    .price-amount { font-size: 3rem; font-weight: 900; letter-spacing: -2px; }
-    .price-amount sup { font-size: 1.2rem; vertical-align: top; margin-top: 10px; font-weight: 600; }
-    .price-period { font-size: 0.85rem; color: var(--muted); margin-bottom: 6px; }
-    .price-og { font-size: 0.85rem; color: var(--muted); text-decoration: line-through; margin-bottom: 24px; }
-    .price-features { list-style: none; margin-bottom: 28px; text-align: left; }
+
+    .price-card.featured {
+      padding-top: 52px;
+    }
+
+    .price-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--muted);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .price-amount {
+      font-size: 3rem;
+      font-weight: 900;
+      letter-spacing: -2px;
+    }
+
+    .price-amount sup {
+      font-size: 1.2rem;
+      vertical-align: top;
+      margin-top: 10px;
+      font-weight: 600;
+    }
+
+    .price-period {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .price-og {
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-decoration: line-through;
+      margin-bottom: 24px;
+    }
+
+    .price-features {
+      list-style: none;
+      margin-bottom: 28px;
+      text-align: left;
+    }
+
     .price-features li {
-      display: flex; gap: 10px; align-items: flex-start;
-      font-size: 0.85rem; color: var(--muted); padding: 6px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.04);
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      font-size: 0.85rem;
+      color: var(--muted);
+      padding: 6px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
     }
-    .price-features li:last-child { border-bottom: none; }
-    .price-features .check { color: var(--green); font-size: 0.9rem; flex-shrink: 0; }
+
+    .price-features li:last-child {
+      border-bottom: none;
+    }
+
+    .price-features .check {
+      color: var(--green);
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
 
     /* ── FAQ ── */
-    .faq-list { max-width: 720px; }
+    .faq-list {
+      max-width: 720px;
+    }
+
     details {
-      border: 1px solid var(--border); border-radius: 12px;
-      margin-bottom: 10px; overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      margin-bottom: 10px;
+      overflow: hidden;
       background: var(--card);
     }
+
     summary {
-      padding: 18px 22px; cursor: pointer; font-weight: 600; font-size: 0.92rem;
-      list-style: none; display: flex; justify-content: space-between; align-items: center;
+      padding: 18px 22px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.92rem;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       user-select: none;
     }
-    summary::-webkit-details-marker { display: none; }
-    summary::after { content: '+'; font-size: 1.2rem; color: var(--indigo-light); transition: transform 0.2s; }
-    details[open] summary::after { transform: rotate(45deg); }
-    .faq-body { padding: 0 22px 18px; color: var(--muted); font-size: 0.88rem; line-height: 1.7; }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary::after {
+      content: '+';
+      font-size: 1.2rem;
+      color: var(--indigo-light);
+      transition: transform 0.2s;
+    }
+
+    details[open] summary::after {
+      transform: rotate(45deg);
+    }
+
+    .faq-body {
+      padding: 0 22px 18px;
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.7;
+    }
 
     /* ── EARLY ACCESS FORM ── */
     .form-section {
-      background: linear-gradient(135deg, rgba(99,102,241,0.12), rgba(124,58,237,0.1));
-      border: 1px solid rgba(99,102,241,0.25);
-      border-radius: 24px; padding: 60px 40px; text-align: center;
-      max-width: 680px; margin: 0 auto;
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.12), rgba(124, 58, 237, 0.1));
+      border: 1px solid rgba(99, 102, 241, 0.25);
+      border-radius: 24px;
+      padding: 60px 40px;
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto;
     }
-    .form-section h2 { margin-bottom: 10px; }
-    .form-section p { color: var(--muted); margin-bottom: 32px; }
-    .form-row { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+
+    .form-section h2 {
+      margin-bottom: 10px;
+    }
+
+    .form-section p {
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
     .form-input {
-      flex: 1; min-width: 220px; background: rgba(255,255,255,0.06);
-      border: 1px solid var(--border); border-radius: 10px;
-      color: var(--text); font-size: 0.9rem; padding: 13px 18px;
-      font-family: 'Inter', sans-serif; outline: none;
+      flex: 1;
+      min-width: 220px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--text);
+      font-size: 0.9rem;
+      padding: 13px 18px;
+      font-family: 'Inter', sans-serif;
+      outline: none;
       transition: border-color 0.2s;
     }
-    .form-input:focus { border-color: var(--indigo); }
-    .form-input::placeholder { color: var(--muted); }
-    .form-note { margin-top: 14px; font-size: 0.75rem; color: var(--muted); }
+
+    .form-input:focus {
+      border-color: var(--indigo);
+    }
+
+    .form-input::placeholder {
+      color: var(--muted);
+    }
+
+    .form-note {
+      margin-top: 14px;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
 
     /* ── FOOTER ── */
     footer {
-      background: var(--bg); border-top: 1px solid var(--border);
-      padding: 40px 5%; text-align: center;
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 40px 5%;
+      text-align: center;
     }
-    footer .logo { font-size: 1.1rem; display: block; margin-bottom: 10px; }
-    footer p { color: var(--muted); font-size: 0.8rem; line-height: 1.8; }
-    .footer-links { display: flex; gap: 20px; justify-content: center; margin: 16px 0; flex-wrap: wrap; }
-    .footer-links a { color: var(--muted); text-decoration: none; font-size: 0.82rem; transition: color 0.2s; }
-    .footer-links a:hover { color: var(--indigo-light); }
+
+    footer .logo {
+      font-size: 1.1rem;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    footer p {
+      color: var(--muted);
+      font-size: 0.8rem;
+      line-height: 1.8;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin: 16px 0;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.82rem;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--indigo-light);
+    }
 
     /* ── WHATSAPP FLOAT ── */
     .wa-float {
-      position: fixed; bottom: 28px; right: 28px; z-index: 999;
-      background: #25D366; border-radius: 50%; width: 56px; height: 56px;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
-      text-decoration: none; transition: all 0.25s;
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 999;
+      background: #25D366;
+      border-radius: 50%;
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+      text-decoration: none;
+      transition: all 0.25s;
     }
-    .wa-float:hover { transform: scale(1.1); box-shadow: 0 6px 30px rgba(37,211,102,0.6); }
-    .wa-float svg { width: 28px; height: 28px; fill: white; }
+
+    .wa-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6);
+    }
+
+    .wa-float svg {
+      width: 28px;
+      height: 28px;
+      fill: white;
+    }
 
     /* ── ANNOUNCEMENT BAR ── */
     .announcement {
       background: linear-gradient(90deg, var(--violet), var(--indigo));
-      text-align: center; padding: 10px 20px;
-      font-size: 0.78rem; font-weight: 600; color: #fff; letter-spacing: 0.3px;
+      text-align: center;
+      padding: 10px 20px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: 0.3px;
     }
-    .announcement a { color: var(--amber); text-decoration: underline; }
+
+    .announcement a {
+      color: var(--amber);
+      text-decoration: underline;
+    }
 
     /* ── MOBILE ── */
     @media (max-width: 768px) {
-      section { padding: 60px 5%; }
-      .hero { padding: 120px 5% 60px; }
-      .form-section { padding: 40px 24px; }
-      .diff-grid { grid-template-columns: 1fr; }
-      .hero-stats { gap: 24px; }
+      section {
+        padding: 60px 5%;
+      }
+
+      .hero {
+        padding: 120px 5% 60px;
+      }
+
+      .form-section {
+        padding: 40px 24px;
+      }
+
+      .diff-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-stats {
+        gap: 24px;
+      }
     }
 
     /* ── ANIMATIONS ── */
     .fade-up {
-      opacity: 0; transform: translateY(24px);
+      opacity: 0;
+      transform: translateY(24px);
       transition: opacity 0.6s ease, transform 0.6s ease;
     }
-    .fade-up.visible { opacity: 1; transform: translateY(0); }
 
-    /* Stagger children */
-    .stagger > * { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
-    .stagger > *.visible { opacity: 1; transform: translateY(0); }
-  </style>
-</head>
-<body>
-
-<!-- Announcement Bar -->
-<div class="announcement">
-  🎉 Early Bird Offer: First 15 CA firms get 50% off forever — <a href="#register">Claim Your Spot →</a>
-</div>
-
-<!-- NAV -->
-<nav>
-  <div class="logo">Nirvi<span>Sha</span></div>
-  <a href="#register" class="nav-cta">Get Early Access</a>
-</nav>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-glow"></div>
-  <div style="position:relative; z-index:1; max-width:860px; width:100%;">
-    <div class="badge">Now in Early Access · Mumbai · Mulund</div>
-    <h1>Your CA Practice.<br/><span class="grad">On WhatsApp. Automated.</span></h1>
-    <p class="hero-sub">
-      NirviSha turns <strong>WhatsApp messages from your clients</strong> into verified Tally entries,
-      GST reconciliation, and ITC reports — without a single phone call or manual data entry.
-    </p>
-    <div class="hero-btns">
-      <a href="#register" class="btn-primary">🚀 Get Early Access — ₹2,499/mo</a>
-      <a href="#features" class="btn-secondary">See All Features ↓</a>
-    </div>
-    <div class="hero-stats">
-      <div class="stat"><div class="stat-num">10+</div><div class="stat-label">Live Features</div></div>
-      <div class="stat"><div class="stat-num">₹0</div><div class="stat-label">Setup Cost</div></div>
-      <div class="stat"><div class="stat-num">0</div><div class="stat-label">Apps for Clients</div></div>
-      <div class="stat"><div class="stat-num">100%</div><div class="stat-label">WhatsApp Native</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- PROBLEM -->
-<section class="problem">
-  <div class="fade-up">
-    <span class="section-tag">The Problem</span>
-    <h2>Har CA ke liye yahi situation hai 😮‍💨</h2>
-    <p class="section-sub">Sound familiar? These are the daily pain points NirviSha is built to eliminate.</p>
-  </div>
-  <div class="pain-grid stagger">
-    <div class="pain-card"><span class="emoji">📱</span>"Client ne WhatsApp pe bill ka photo bheja — but data entry manually karni pad rahi hai"</div>
-    <div class="pain-card"><span class="emoji">🔍</span>"GSTR-2B aur actual bills manually compare karna padta hai har mahine"</div>
-    <div class="pain-card"><span class="emoji">📊</span>"Bank statement ka data Tally mein copy-paste karna padta hai line by line"</div>
-    <div class="pain-card"><span class="emoji">😰</span>"ITC claim karo toh GST notice aata hai — pata nahi kaunsa ITC safe hai"</div>
-    <div class="pain-card"><span class="emoji">📅</span>"GSTR-1 filing deadline yaad rakhna padta hai for 30+ clients manually"</div>
-    <div class="pain-card"><span class="emoji">👶</span>"Junior staff se data entry mein galti hoti hai — aur CA hamesha check karta rehta hai"</div>
-  </div>
-</section>
-
-<!-- HOW IT WORKS -->
-<section>
-  <div class="fade-up" style="margin-bottom:50px;">
-    <span class="section-tag">How It Works</span>
-    <h2>3 Steps. That's It.</h2>
-    <p class="section-sub">No app installation, no training, no complex setup. Works on top of WhatsApp your clients already use.</p>
-  </div>
-  <div class="steps stagger" style="max-width:900px; gap:16px; display:grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr));">
-    <div class="step">
-      <div class="step-num">01</div>
-      <h3>Client sends bill on WhatsApp 📲</h3>
-      <p>Your client photographs any bill or bank statement and sends it on the same WhatsApp number they already use. No registration, no app, no training needed.</p>
-    </div>
-    <div class="step">
-      <div class="step-num">02</div>
-      <h3>AI extracts everything 🤖</h3>
-      <p>NirviSha's Gemini-powered AI reads the bill — vendor name, GST number, amount, tax split, date — and creates a verified transaction. Ready for CA review in seconds.</p>
-    </div>
-    <div class="step">
-      <div class="step-num">03</div>
-      <h3>Export to Tally. File GST. Done. ✅</h3>
-      <p>One-click Tally XML export, GSTR-2B reconciliation, ITC matching, filing calendar — everything your practice needs, without any manual data entry.</p>
-    </div>
-  </div>
-</section>
-
-<!-- FEATURES -->
-<section class="features-bg" id="features">
-  <div class="fade-up">
-    <span class="section-tag">Features</span>
-    <h2>Everything Your Practice Needs</h2>
-    <p class="section-sub">10 powerful features live today. More coming every week.</p>
-  </div>
-  <div class="features-grid stagger">
-
-    <div class="feature-card">
-      <div class="feature-icon">📲</div>
-      <h3>WhatsApp Receipt Bot</h3>
-      <p>Client sends a bill photo → AI extracts vendor, amount, GSTIN, tax split automatically. No app. No portal. No friction for clients.</p>
-      <span class="feature-live">✓ Live Now</span>
-    </div>
-
-    <div class="feature-card">
-      <div class="feature-icon">🏦</div>
-      <h3>Bank Statement AI Extraction</h3>
-      <p>Upload any PDF bank statement → every debit and credit entry extracted automatically. Months of data in seconds.</p>
-      <span class="feature-live">✓ Live Now</span>
-    </div>
-
-    <div class="feature-card">
-      <div class="feature-icon">📤</div>
-      <h3>Tally XML Export</h3>
-      <p>One-click export of all verified transactions as a Tally-ready XML file. Imports directly into Tally Prime and ERP 9.</p>
-      <span class="feature-live">✓ Live Now</span>
-    </div>
-
-    <div class="feature-card">
-      <div class="feature-icon">🔗</div>
-      <h3>Bank ↔ Tally Reconciliation</h3>
-      <p>Automatically matches bank entries against Tally data — highlights every unmatched or missing transaction instantly.</p>
-      <span class="feature-live">✓ Live Now</span>
-    </div>
-
-    <div class="feature-card">
-      <div class="feature-icon">🔍</div>
-      <h3>GSTR-1 vs Bank Cross-check</h3>
-      <p>Upload Tally GSTR-1 → NirviSha compares declared sales against actual bank receipts. Catch discrepancies before the GST officer does.</p>
-      <span class="feature-live">✓ Live Now</span>
-    </div>
-
-    <div class="feature-card">
-      <div class="feature-icon">🧠</div>
-      <h3>AI Narration Memory</h3>
-      <p>Map "Swiggy" to "Staff Food Expense" once — NirviSha remembers it forever across all clients. AI learns your preferences.</p>
-      <span class="feature-live">✓ Live Now</span>
-    </div>
-
-    <div class="feature-card">
-      <div class="feature-icon">🗓️</div>
-      <h3>GST Filing Calendar</h3>
-      <p>Auto-generates GSTR-1, GSTR-3B, and TDS due dates for every client. Track filed vs overdue at a glance.</p>
-      <span class="feature-live">✓ Live Now</span>
-    </div>
-
-    <div class="feature-card">
-      <div class="feature-icon">👥</div>
-      <h3>Staff Login + Role Control</h3>
-      <p>Add junior staff, assign specific clients. Staff see only what you allow. You stay in control even when out of office.</p>
-      <span class="feature-live">✓ Live Now</span>
-    </div>
-
-    <div class="feature-card">
-      <div class="feature-icon">🛡️</div>
-      <h3>ITC Matching (Bill ↔ Bank)</h3>
-      <p>Matches every purchase bill against actual bank payments — tells you exactly which ITC is safe to claim, reducing GST audit risk.</p>
-      <span class="feature-live">✓ Live Now</span>
-    </div>
-
-    <div class="feature-card">
-      <div class="feature-icon">📋</div>
-      <h3>GSTR-2B Reconciliation</h3>
-      <p>Upload GSTR-2B JSON → flags Safe ITC ✅, At-Risk ⚠️, and Missing Bills 📋. ITC confidence in minutes, not hours.</p>
-      <span class="feature-live">✓ Live Now</span>
-    </div>
-
-    <div class="feature-card">
-      <div class="feature-icon">📣</div>
-      <h3>WhatsApp Reminder Engine</h3>
-      <p>One button → personalized WhatsApp reminders sent to every client who hasn't uploaded this month. Auto follow-up. Coming very soon.</p>
-      <span class="feature-soon">⏳ Coming Soon</span>
-    </div>
-
-    <div class="feature-card">
-      <div class="feature-icon">📊</div>
-      <h3>CA Practice Dashboard</h3>
-      <p>All clients. All statuses. One screen. See ITC %, pending uploads, filing deadlines for your entire practice at once.</p>
-      <span class="feature-soon">⏳ Coming Soon</span>
-    </div>
-
-  </div>
-</section>
-
-<!-- WHY NIRVISHA -->
-<section>
-  <div class="fade-up">
-    <span class="section-tag">Why NirviSha</span>
-    <h2>The Only Tool Your Clients Don't Need to Learn</h2>
-    <p class="section-sub">Other tools automate the CA's internal work. NirviSha automates the client-CA interface — the most broken part of every practice.</p>
-  </div>
-  <div class="diff-grid stagger">
-    <div class="diff-card">
-      <h3>❌ Traditional workflow</h3>
-      <div class="diff-row"><span class="icon">😤</span><span>Client sends photo on WhatsApp → CA manually types into Excel → exports to Tally → reconciles manually</span></div>
-      <div class="diff-row"><span class="icon">😤</span><span>GSTR-2B downloaded from portal → compared manually against bills</span></div>
-      <div class="diff-row"><span class="icon">😤</span><span>Call clients to remind them to share bills</span></div>
-      <div class="diff-row"><span class="icon">😤</span><span>GST filing dates tracked in a shared calendar or diary</span></div>
-    </div>
-    <div class="diff-card" style="border-color: rgba(16,185,129,0.3); background: rgba(16,185,129,0.04);">
-      <h3 style="color: var(--green);">✅ With NirviSha</h3>
-      <div class="diff-row"><span class="icon">⚡</span><span class="diff-highlight">Client sends photo → extracted in 10 seconds → Tally-ready. Zero typing.</span></div>
-      <div class="diff-row"><span class="icon">⚡</span><span class="diff-highlight">Upload GSTR-2B JSON → NirviSha flags every at-risk entry automatically</span></div>
-      <div class="diff-row"><span class="icon">⚡</span><span class="diff-highlight">One click → WhatsApp reminders sent to all pending clients automatically</span></div>
-      <div class="diff-row"><span class="icon">⚡</span><span class="diff-highlight">Filing calendar auto-generated per client, tracks overdue in real time</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- PRICING -->
-<section class="pricing-bg" id="pricing">
-  <div class="fade-up" style="text-align:center; margin-bottom:50px;">
-    <span class="section-tag">Pricing</span>
-    <h2>Simple, Transparent Pricing</h2>
-    <p class="section-sub" style="margin:0 auto;">One flat price. Unlimited clients. Unlimited staff. No per-user pricing nonsense.</p>
-  </div>
-  <div class="pricing-grid">
-    <div class="price-card featured">
-      <div class="price-label">Early Bird — Limited Spots</div>
-      <div class="price-amount"><sup>₹</sup>2,499</div>
-      <div class="price-period">per month, per firm · locked in forever</div>
-      <div class="price-og">Regular price: ₹4,999/month</div>
-      <ul class="price-features">
-        <li><span class="check">✓</span>Unlimited clients</li>
-        <li><span class="check">✓</span>Unlimited staff accounts</li>
-        <li><span class="check">✓</span>WhatsApp bot (dedicated number)</li>
-        <li><span class="check">✓</span>All 10 current features</li>
-        <li><span class="check">✓</span>Tally XML export</li>
-        <li><span class="check">✓</span>GSTR-2B reconciliation</li>
-        <li><span class="check">✓</span>ITC matching dashboard</li>
-        <li><span class="check">✓</span>Every new feature as it ships</li>
-        <li><span class="check">✓</span>30-day free trial — no card needed</li>
-        <li><span class="check">✓</span>Direct WhatsApp support from founders</li>
-      </ul>
-      <a href="#register" class="btn-primary" style="width:100%; justify-content:center;">Claim Early Bird Spot →</a>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section>
-  <div class="fade-up" style="margin-bottom:40px;">
-    <span class="section-tag">FAQ</span>
-    <h2>Questions? Answered.</h2>
-  </div>
-  <div class="faq-list stagger">
-    <details>
-      <summary>Does my client need to install anything?</summary>
-      <div class="faq-body">No. Clients send photos and documents on the same WhatsApp they already use — nothing to install, no registration, no training required. If your client can send a WhatsApp message, they can use NirviSha.</div>
-    </details>
-    <details>
-      <summary>Does it work with Tally Prime and Tally ERP 9?</summary>
-      <div class="faq-body">Yes. NirviSha exports standard Tally XML that imports seamlessly into both Tally Prime and Tally ERP 9. No custom Tally configuration needed.</div>
-    </details>
-    <details>
-      <summary>Is each firm's data private and secure?</summary>
-      <div class="faq-body">Absolutely. Each CA firm has completely isolated data on NirviSha. Your clients' bills and financial data are never visible to any other firm — ever. We use enterprise-grade security with row-level database isolation.</div>
-    </details>
-    <details>
-      <summary>Can I add my junior staff?</summary>
-      <div class="faq-body">Yes. You add staff accounts and control exactly what each staff member can see and do. Staff can be limited to specific clients. Only you (the CA admin) can approve, edit, or export.</div>
-    </details>
-    <details>
-      <summary>How is NirviSha different from VouchRit or TaxOne?</summary>
-      <div class="faq-body">NirviSha is the only tool where your <strong>clients themselves</strong> can upload documents directly via WhatsApp — no portal, no app, no staff involvement needed. VouchRit has no WhatsApp. TaxOne requires staff to upload on behalf of clients. Our approach eliminates the collection bottleneck entirely.</div>
-    </details>
-    <details>
-      <summary>What happens after the 30-day free trial?</summary>
-      <div class="faq-body">If you registered during early access, your price is locked at ₹2,499/month forever — even when we raise pricing. You'll get a simple payment link. No auto-charge without your consent.</div>
-    </details>
-    <details>
-      <summary>I'm in Mulund / Thane. Can I see a live demo?</summary>
-      <div class="faq-body">Absolutely! We're based in Mulund and happy to do an in-person demo at your office. WhatsApp us directly — details in the footer below.</div>
-    </details>
-  </div>
-</section>
-
-<!-- REGISTER / EARLY ACCESS FORM -->
-<section id="register" style="padding: 80px 5%;">
-  <div class="form-section fade-up">
-    <span class="section-tag">Early Access</span>
-    <h2>Reserve Your Spot 🎯</h2>
-    <p>Only 15 founder spots at ₹2,499/month. Lock in your price before March 31.</p>
-    <div class="form-row">
-      <input type="text" class="form-input" placeholder="Your Name" id="name" />
-      <input type="text" class="form-input" placeholder="CA Firm Name" id="firm" />
-    </div>
-    <div class="form-row" style="margin-top:12px;">
-      <input type="email" class="form-input" placeholder="Email Address" id="email" />
-      <input type="tel" class="form-input" placeholder="WhatsApp Number" id="phone" />
-    </div>
-    <div style="margin-top:16px;">
-      <button class="btn-primary" style="font-size:1rem; padding:16px 40px;" onclick="submitForm()">
-        🚀 Register for Early Access
-      </button>
-    </div>
-    <p class="form-note">✅ No credit card required · 30-day free trial · We'll WhatsApp you within 2 hours</p>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <span class="logo">Nirvi<span>Sha</span></span>
-  <div class="footer-links">
-    <a href="#features">Features</a>
-    <a href="#pricing">Pricing</a>
-    <a href="#register">Early Access</a>
-    <a href="https://wa.me/91XXXXXXXXXX" target="_blank">WhatsApp Us</a>
-  </div>
-  <p>
-    Built in Mulund, Mumbai · Made for Indian CA practices<br/>
-    © 2026 NirviSha. All rights reserved.<br/>
-    <span style="font-size:0.75rem;">Powered by Google Gemini AI · Tally Compatible · Supabase Secured</span>
-  </p>
-</footer>
-
-<!-- WhatsApp Float Button -->
-<a class="wa-float" href="https://wa.me/91XXXXXXXXXX?text=Hi%2C%20I%20want%20to%20know%20more%20about%20NirviSha" target="_blank" title="Chat with us on WhatsApp">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-  </svg>
-</a>
-
-<script>
-  // ── Scroll animations ──
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        // Stagger children
-        if (entry.target.classList.contains('stagger')) {
-          const children = entry.target.children;
-          Array.from(children).forEach((child, i) => {
-            setTimeout(() => child.classList.add('visible'), i * 80);
-          });
-        }
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.fade-up, .stagger').forEach(el => observer.observe(el));
-
-  // ── Form submission ──
-  function submitForm() {
-    const name = document.getElementById('name').value.trim();
-    const firm = document.getElementById('firm').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const phone = document.getElementById('phone').value.trim();
-
-    if (!name || !firm || !email || !phone) {
-      alert('Please fill in all fields to register.');
-      return;
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
-    // Replace YOUR_GOOGLE_FORM_ID with your actual Google Form ID
-    const FORM_URL = 'https://docs.google.com/forms/d/e/YOUR_GOOGLE_FORM_ID/formResponse';
+    /* Stagger children */
+    .stagger>* {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
 
-    // Open WhatsApp as fallback (always works, no form setup needed)
-    const msg = `Hi! I want early access to NirviSha.\n\nName: ${name}\nFirm: ${firm}\nEmail: ${email}\nPhone: ${phone}`;
-    window.open(`https://wa.me/91XXXXXXXXXX?text=${encodeURIComponent(msg)}`, '_blank');
+    .stagger>*.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
 
-    // Thank you message
-    const btn = event.target;
-    btn.textContent = '✅ Registered! We will WhatsApp you shortly.';
-    btn.style.background = 'linear-gradient(135deg, #059669, #10B981)';
-    btn.disabled = true;
-  }
-</script>
+<body>
+
+  <!-- Announcement Bar -->
+  <div class="announcement">
+    🚀 Early Access is open — Register now and be first to get your login before we go public. <a href="#register">Claim
+      Your Spot →</a>
+  </div>
+
+  <!-- NAV -->
+  <nav>
+    <div class="logo">Nirvi<span>Sha</span></div>
+    <a href="#register" class="nav-cta">Get Early Access</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-glow"></div>
+    <div style="position:relative; z-index:1; max-width:860px; width:100%;">
+      <div class="badge">Now in Early Access · Mumbai · Mulund</div>
+      <h1>Your CA Practice.<br /><span class="grad">On WhatsApp. Automated.</span></h1>
+      <p class="hero-sub">
+        NirviSha turns <strong>WhatsApp messages from your clients</strong> into verified Tally entries,
+        GST reconciliation, and ITC reports — without a single phone call or manual data entry.
+      </p>
+      <div class="hero-btns">
+        <a href="#register" class="btn-primary">🚀 Get Early Access — ₹2,499/mo</a>
+        <a href="#features" class="btn-secondary">See All Features ↓</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-num">10+</div>
+          <div class="stat-label">Live Features</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">₹0</div>
+          <div class="stat-label">Setup Cost</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">0</div>
+          <div class="stat-label">Apps for Clients</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">WhatsApp Native</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section class="problem">
+    <div class="fade-up">
+      <span class="section-tag">The Problem</span>
+      <h2>Har CA ke liye yahi situation hai 😮‍💨</h2>
+      <p class="section-sub">Sound familiar? These are the daily pain points NirviSha is built to eliminate.</p>
+    </div>
+    <div class="pain-grid stagger">
+      <div class="pain-card"><span class="emoji">📱</span>"Client ne WhatsApp pe bill ka photo bheja — but data entry
+        manually karni pad rahi hai"</div>
+      <div class="pain-card"><span class="emoji">🔍</span>"GSTR-2B aur actual bills manually compare karna padta hai har
+        mahine"</div>
+      <div class="pain-card"><span class="emoji">📊</span>"Bank statement ka data Tally mein copy-paste karna padta hai
+        line by line"</div>
+      <div class="pain-card"><span class="emoji">😰</span>"ITC claim karo toh GST notice aata hai — pata nahi kaunsa ITC
+        safe hai"</div>
+      <div class="pain-card"><span class="emoji">📅</span>"GSTR-1 filing deadline yaad rakhna padta hai for 30+ clients
+        manually"</div>
+      <div class="pain-card"><span class="emoji">👶</span>"Junior staff se data entry mein galti hoti hai — aur CA
+        hamesha check karta rehta hai"</div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section>
+    <div class="fade-up" style="margin-bottom:50px;">
+      <span class="section-tag">How It Works</span>
+      <h2>3 Steps. That's It.</h2>
+      <p class="section-sub">No app installation, no training, no complex setup. Works on top of WhatsApp your clients
+        already use.</p>
+    </div>
+    <div class="steps stagger"
+      style="max-width:900px; gap:16px; display:grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr));">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>Client sends bill on WhatsApp 📲</h3>
+        <p>Your client photographs any bill or bank statement and sends it on the same WhatsApp number they already use.
+          No registration, no app, no training needed.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>AI extracts everything 🤖</h3>
+        <p>NirviSha's Gemini-powered AI reads the bill — vendor name, GST number, amount, tax split, date — and creates
+          a verified transaction. Ready for CA review in seconds.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>Export to Tally. File GST. Done. ✅</h3>
+        <p>One-click Tally XML export, GSTR-2B reconciliation, ITC matching, filing calendar — everything your practice
+          needs, without any manual data entry.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features-bg" id="features">
+    <div class="fade-up">
+      <span class="section-tag">Features</span>
+      <h2>Everything Your Practice Needs</h2>
+      <p class="section-sub">10 powerful features live today. More coming every week.</p>
+    </div>
+    <div class="features-grid stagger">
+
+      <div class="feature-card">
+        <div class="feature-icon">📲</div>
+        <h3>WhatsApp Receipt Bot</h3>
+        <p>Client sends a bill photo → AI extracts vendor, amount, GSTIN, tax split automatically. No app. No portal. No
+          friction for clients.</p>
+        <span class="feature-live">✓ Live Now</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🏦</div>
+        <h3>Bank Statement AI Extraction</h3>
+        <p>Upload any PDF bank statement → every debit and credit entry extracted automatically. Months of data in
+          seconds.</p>
+        <span class="feature-live">✓ Live Now</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">📤</div>
+        <h3>Tally XML Export</h3>
+        <p>One-click export of all verified transactions as a Tally-ready XML file. Imports directly into Tally Prime
+          and ERP 9.</p>
+        <span class="feature-live">✓ Live Now</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🔗</div>
+        <h3>Bank ↔ Tally Reconciliation</h3>
+        <p>Automatically matches bank entries against Tally data — highlights every unmatched or missing transaction
+          instantly.</p>
+        <span class="feature-live">✓ Live Now</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🔍</div>
+        <h3>GSTR-1 vs Bank Cross-check</h3>
+        <p>Upload Tally GSTR-1 → NirviSha compares declared sales against actual bank receipts. Catch discrepancies
+          before the GST officer does.</p>
+        <span class="feature-live">✓ Live Now</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🧠</div>
+        <h3>AI Narration Memory</h3>
+        <p>Map "Swiggy" to "Staff Food Expense" once — NirviSha remembers it forever across all clients. AI learns your
+          preferences.</p>
+        <span class="feature-live">✓ Live Now</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🗓️</div>
+        <h3>GST Filing Calendar</h3>
+        <p>Auto-generates GSTR-1, GSTR-3B, and TDS due dates for every client. Track filed vs overdue at a glance.</p>
+        <span class="feature-live">✓ Live Now</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">👥</div>
+        <h3>Staff Login + Role Control</h3>
+        <p>Add junior staff, assign specific clients. Staff see only what you allow. You stay in control even when out
+          of office.</p>
+        <span class="feature-live">✓ Live Now</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🛡️</div>
+        <h3>ITC Matching (Bill ↔ Bank)</h3>
+        <p>Matches every purchase bill against actual bank payments — tells you exactly which ITC is safe to claim,
+          reducing GST audit risk.</p>
+        <span class="feature-live">✓ Live Now</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">📋</div>
+        <h3>GSTR-2B Reconciliation</h3>
+        <p>Upload GSTR-2B JSON → flags Safe ITC ✅, At-Risk ⚠️, and Missing Bills 📋. ITC confidence in minutes, not
+          hours.</p>
+        <span class="feature-live">✓ Live Now</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">📣</div>
+        <h3>WhatsApp Reminder Engine</h3>
+        <p>One button → personalized WhatsApp reminders sent to every client who hasn't uploaded this month. Auto
+          follow-up. Coming very soon.</p>
+        <span class="feature-soon">⏳ Coming Soon</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <h3>CA Practice Dashboard</h3>
+        <p>All clients. All statuses. One screen. See ITC %, pending uploads, filing deadlines for your entire practice
+          at once.</p>
+        <span class="feature-soon">⏳ Coming Soon</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- WHY NIRVISHA -->
+  <section>
+    <div class="fade-up">
+      <span class="section-tag">Why NirviSha</span>
+      <h2>The Only Tool Your Clients Don't Need to Learn</h2>
+      <p class="section-sub">Other tools automate the CA's internal work. NirviSha automates the client-CA interface —
+        the most broken part of every practice.</p>
+    </div>
+    <div class="diff-grid stagger">
+      <div class="diff-card">
+        <h3>❌ Traditional workflow</h3>
+        <div class="diff-row"><span class="icon">😤</span><span>Client sends photo on WhatsApp → CA manually types into
+            Excel → exports to Tally → reconciles manually</span></div>
+        <div class="diff-row"><span class="icon">😤</span><span>GSTR-2B downloaded from portal → compared manually
+            against bills</span></div>
+        <div class="diff-row"><span class="icon">😤</span><span>Call clients to remind them to share bills</span></div>
+        <div class="diff-row"><span class="icon">😤</span><span>GST filing dates tracked in a shared calendar or
+            diary</span></div>
+      </div>
+      <div class="diff-card" style="border-color: rgba(16,185,129,0.3); background: rgba(16,185,129,0.04);">
+        <h3 style="color: var(--green);">✅ With NirviSha</h3>
+        <div class="diff-row"><span class="icon">⚡</span><span class="diff-highlight">Client sends photo → extracted in
+            10 seconds → Tally-ready. Zero typing.</span></div>
+        <div class="diff-row"><span class="icon">⚡</span><span class="diff-highlight">Upload GSTR-2B JSON → NirviSha
+            flags every at-risk entry automatically</span></div>
+        <div class="diff-row"><span class="icon">⚡</span><span class="diff-highlight">One click → WhatsApp reminders
+            sent to all pending clients automatically</span></div>
+        <div class="diff-row"><span class="icon">⚡</span><span class="diff-highlight">Filing calendar auto-generated per
+            client, tracks overdue in real time</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing-bg" id="pricing">
+    <div class="fade-up" style="text-align:center; margin-bottom:50px;">
+      <span class="section-tag">Pricing</span>
+      <h2>Simple, Transparent Pricing</h2>
+      <p class="section-sub" style="margin:0 auto;">One flat price. Unlimited clients. Unlimited staff. No per-user
+        pricing nonsense.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card featured">
+        <div class="price-label">Early Access</div>
+        <div style="font-size:2rem; font-weight:900; margin:16px 0; letter-spacing:-1px;">Be First In 🚀</div>
+        <div class="price-period">Register now · Get your login before public launch</div>
+        <div style="font-size:0.82rem; color:var(--muted); margin-bottom:24px;">No pricing commitment required. Try it
+          free on day one.</div>
+        <ul class="price-features">
+          <li><span class="check">✓</span>Early login access before public launch</li>
+          <li><span class="check">✓</span>Unlimited clients</li>
+          <li><span class="check">✓</span>Unlimited staff accounts</li>
+          <li><span class="check">✓</span>WhatsApp bot (dedicated number)</li>
+          <li><span class="check">✓</span>All 10 current features</li>
+          <li><span class="check">✓</span>Tally XML export</li>
+          <li><span class="check">✓</span>GSTR-2B reconciliation</li>
+          <li><span class="check">✓</span>ITC matching dashboard</li>
+          <li><span class="check">✓</span>Every new feature as it ships</li>
+          <li><span class="check">✓</span>Direct WhatsApp support from founders</li>
+        </ul>
+        <a href="#register" class="btn-primary" style="width:100%; justify-content:center;">Get Early Access →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section>
+    <div class="fade-up" style="margin-bottom:40px;">
+      <span class="section-tag">FAQ</span>
+      <h2>Questions? Answered.</h2>
+    </div>
+    <div class="faq-list stagger">
+      <details>
+        <summary>Does my client need to install anything?</summary>
+        <div class="faq-body">No. Clients send photos and documents on the same WhatsApp they already use — nothing to
+          install, no registration, no training required. If your client can send a WhatsApp message, they can use
+          NirviSha.</div>
+      </details>
+      <details>
+        <summary>Does it work with Tally Prime and Tally ERP 9?</summary>
+        <div class="faq-body">Yes. NirviSha exports standard Tally XML that imports seamlessly into both Tally Prime and
+          Tally ERP 9. No custom Tally configuration needed.</div>
+      </details>
+      <details>
+        <summary>Is each firm's data private and secure?</summary>
+        <div class="faq-body">Absolutely. Each CA firm has completely isolated data on NirviSha. Your clients' bills and
+          financial data are never visible to any other firm — ever. We use enterprise-grade security with row-level
+          database isolation.</div>
+      </details>
+      <details>
+        <summary>Can I add my junior staff?</summary>
+        <div class="faq-body">Yes. You add staff accounts and control exactly what each staff member can see and do.
+          Staff can be limited to specific clients. Only you (the CA admin) can approve, edit, or export.</div>
+      </details>
+      <details>
+        <summary>How is NirviSha different from VouchRit or TaxOne?</summary>
+        <div class="faq-body">NirviSha is the only tool where your <strong>clients themselves</strong> can upload
+          documents directly via WhatsApp — no portal, no app, no staff involvement needed. VouchRit has no WhatsApp.
+          TaxOne requires staff to upload on behalf of clients. Our approach eliminates the collection bottleneck
+          entirely.</div>
+      </details>
+      <details>
+        <summary>What happens after I register for early access?</summary>
+        <div class="faq-body">Register now and we will reach you on WhatsApp within 2 hours to share your early login
+          credentials. You get full access to all 10 live features from day one — no credit card, no payment needed to
+          get started.</div>
+      </details>
+      <details>
+        <summary>I'm in Mulund / Thane. Can I see a live demo?</summary>
+        <div class="faq-body">Absolutely! We're based in Mulund and happy to do an in-person demo at your office.
+          WhatsApp us directly — details in the footer below.</div>
+      </details>
+    </div>
+  </section>
+
+  <!-- REGISTER / EARLY ACCESS FORM -->
+  <section id="register" style="padding: 80px 5%;">
+    <div class="form-section fade-up">
+      <span class="section-tag">Early Access</span>
+      <h2>Get Your Login Before We Launch 🚀</h2>
+      <p>Register now and we will reach you on WhatsApp within 2 hours with your early access login details.</p>
+      <div class="form-row">
+        <input type="text" class="form-input" placeholder="Your Name" id="name" />
+        <input type="text" class="form-input" placeholder="CA Firm Name" id="firm" />
+      </div>
+      <div class="form-row" style="margin-top:12px;">
+        <input type="email" class="form-input" placeholder="Email Address" id="email" />
+        <input type="tel" class="form-input" placeholder="WhatsApp Number" id="phone" />
+      </div>
+      <div style="margin-top:16px;">
+        <button class="btn-primary" style="font-size:1rem; padding:16px 40px;" onclick="submitForm()">
+          🚀 Register for Early Access
+        </button>
+      </div>
+      <p class="form-note">✅ No credit card · No commitment · We will WhatsApp your login details within 2 hours</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="logo">Nirvi<span>Sha</span></span>
+    <div class="footer-links">
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#register">Early Access</a>
+      <a href="https://wa.me/919619424714" target="_blank">WhatsApp Us</a>
+    </div>
+    <p>
+      Built in Mulund, Mumbai · Made for Indian CA practices<br />
+      © 2026 NirviSha. All rights reserved.<br />
+      <span style="font-size:0.75rem;">Powered by Google Gemini AI · Tally Compatible · Supabase Secured</span>
+    </p>
+  </footer>
+
+  <!-- WhatsApp Float Button -->
+  <a class="wa-float" href="https://wa.me/919619424714?text=Hi%2C%20I%20want%20to%20know%20more%20about%20NirviSha"
+    target="_blank" title="Chat with us on WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path
+        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+    </svg>
+  </a>
+
+  <script>
+    // ── Scroll animations ──
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          // Stagger children
+          if (entry.target.classList.contains('stagger')) {
+            const children = entry.target.children;
+            Array.from(children).forEach((child, i) => {
+              setTimeout(() => child.classList.add('visible'), i * 80);
+            });
+          }
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-up, .stagger').forEach(el => observer.observe(el));
+
+    // ── Form submission ──
+    function submitForm() {
+      const name = document.getElementById('name').value.trim();
+      const firm = document.getElementById('firm').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+
+      if (!name || !firm || !email || !phone) {
+        alert('Please fill in all fields to register.');
+        return;
+      }
+
+      // Replace YOUR_GOOGLE_FORM_ID with your actual Google Form ID
+      const FORM_URL = 'https://docs.google.com/forms/d/e/YOUR_GOOGLE_FORM_ID/formResponse';
+
+      // Open WhatsApp as fallback (always works, no form setup needed)
+      const msg = `Hi! I want early access to NirviSha.\n\nName: ${name}\nFirm: ${firm}\nEmail: ${email}\nPhone: ${phone}`;
+      window.open(`https://wa.me/919619424714?text=${encodeURIComponent(msg)}`, '_blank');
+
+      // Thank you message
+      const btn = event.target;
+      btn.textContent = '✅ Registered! We will WhatsApp you shortly.';
+      btn.style.background = 'linear-gradient(135deg, #059669, #10B981)';
+      btn.disabled = true;
+    }
+  </script>
 
 </body>
+
 </html>
