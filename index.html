@@ -11,6 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
     rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <style>
     *,
     *::before,
@@ -379,20 +380,50 @@
       background: var(--bg2);
     }
 
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-      gap: 16px;
+    /* Swiper Coverflow Styles */
+    .features-swiper {
+      width: 100%;
+      padding-top: 40px;
+      padding-bottom: 70px;
+    }
+
+    .swiper-slide {
+      background-position: center;
+      background-size: cover;
+      width: 320px;
+      height: 380px;
+      transition: filter 0.4s ease, opacity 0.4s ease;
+    }
+
+    /* Cinematic blur & dim for side slides */
+    .swiper-slide:not(.swiper-slide-active) {
+      filter: blur(3px);
+      opacity: 0.65;
+    }
+
+    .swiper-pagination-bullet-active {
+      background: var(--indigo) !important;
     }
 
     .feature-card {
-      background: var(--card);
+      background: var(--bg2);
+      /* Solid background to completely prevent text bleed */
       border: 1px solid var(--border);
       border-radius: 16px;
       padding: 28px;
       transition: all 0.25s;
       position: relative;
       overflow: hidden;
+      height: 100%;
+      margin: 0;
+    }
+
+    /* Enhance the active center slide */
+    .swiper-slide-active .feature-card {
+      background: var(--bg);
+      border-color: rgba(99, 102, 241, 0.6);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+      transform: scale(1.02);
     }
 
     .feature-card::before {
@@ -977,105 +1008,111 @@
       <h2>Everything Your Practice Needs</h2>
       <p class="section-sub">10 powerful features live today. More coming every week.</p>
     </div>
-    <div class="features-grid stagger">
+    <div class="swiper features-swiper fade-up">
+      <div class="swiper-wrapper">
 
-      <div class="feature-card">
-        <div class="feature-icon">📲</div>
-        <h3>WhatsApp Receipt Bot</h3>
-        <p>Client sends a bill photo → AI extracts vendor, amount, GSTIN, tax split automatically. No app. No portal. No
-          friction for clients.</p>
-        <span class="feature-live">✓ Live Now</span>
-      </div>
+        <div class="swiper-slide feature-card">
+          <div class="feature-icon">📲</div>
+          <h3>WhatsApp Receipt Bot</h3>
+          <p>Client sends a bill photo → AI extracts vendor, amount, GSTIN, tax split automatically. No app. No portal.
+            No
+            friction for clients.</p>
+          <span class="feature-live">✓ Live Now</span>
+        </div>
 
-      <div class="feature-card">
-        <div class="feature-icon">🏦</div>
-        <h3>Bank Statement AI Extraction</h3>
-        <p>Upload any PDF bank statement → every debit and credit entry extracted automatically. Months of data in
-          seconds.</p>
-        <span class="feature-live">✓ Live Now</span>
-      </div>
+        <div class="swiper-slide feature-card">
+          <div class="feature-icon">🏦</div>
+          <h3>Bank Statement AI Extraction</h3>
+          <p>Upload any PDF bank statement → every debit and credit entry extracted automatically. Months of data in
+            seconds.</p>
+          <span class="feature-live">✓ Live Now</span>
+        </div>
 
-      <div class="feature-card">
-        <div class="feature-icon">📤</div>
-        <h3>Tally XML Export</h3>
-        <p>One-click export of all verified transactions as a Tally-ready XML file. Imports directly into Tally Prime
-          and ERP 9.</p>
-        <span class="feature-live">✓ Live Now</span>
-      </div>
+        <div class="swiper-slide feature-card">
+          <div class="feature-icon">📤</div>
+          <h3>Tally XML Export</h3>
+          <p>One-click export of all verified transactions as a Tally-ready XML file. Imports directly into Tally Prime
+            and ERP 9.</p>
+          <span class="feature-live">✓ Live Now</span>
+        </div>
 
-      <div class="feature-card">
-        <div class="feature-icon">🔗</div>
-        <h3>Bank ↔ Tally Reconciliation</h3>
-        <p>Automatically matches bank entries against Tally data and highlights every unmatched or missing transaction
-          instantly.</p>
-        <span class="feature-live">✓ Live Now</span>
-      </div>
+        <div class="swiper-slide feature-card">
+          <div class="feature-icon">🔗</div>
+          <h3>Bank ↔ Tally Reconciliation</h3>
+          <p>Automatically matches bank entries against Tally data and highlights every unmatched or missing transaction
+            instantly.</p>
+          <span class="feature-live">✓ Live Now</span>
+        </div>
 
-      <div class="feature-card">
-        <div class="feature-icon">🔍</div>
-        <h3>GSTR-1 vs Bank Cross-check</h3>
-        <p>Upload Tally GSTR-1 → NirviSha.ai compares declared sales against actual bank receipts. Catch discrepancies
-          before the GST officer does.</p>
-        <span class="feature-live">✓ Live Now</span>
-      </div>
+        <div class="swiper-slide feature-card">
+          <div class="feature-icon">🔍</div>
+          <h3>GSTR-1 vs Bank Cross-check</h3>
+          <p>Upload Tally GSTR-1 → NirviSha.ai compares declared sales against actual bank receipts. Catch discrepancies
+            before the GST officer does.</p>
+          <span class="feature-live">✓ Live Now</span>
+        </div>
 
-      <div class="feature-card">
-        <div class="feature-icon">🧠</div>
-        <h3>AI Narration Memory</h3>
-        <p>Map "Swiggy" to "Staff Food Expense" once, and NirviSha.ai remembers it forever across all clients. AI learns
-          your
-          preferences.</p>
-        <span class="feature-live">✓ Live Now</span>
-      </div>
+        <div class="swiper-slide feature-card">
+          <div class="feature-icon">🧠</div>
+          <h3>AI Narration Memory</h3>
+          <p>Map "Swiggy" to "Staff Food Expense" once, and NirviSha.ai remembers it forever across all clients. AI
+            learns
+            your
+            preferences.</p>
+          <span class="feature-live">✓ Live Now</span>
+        </div>
 
-      <div class="feature-card">
-        <div class="feature-icon">🗓️</div>
-        <h3>GST Filing Calendar</h3>
-        <p>Auto-generates GSTR-1, GSTR-3B, and TDS due dates for every client. Track filed vs overdue at a glance.</p>
-        <span class="feature-live">✓ Live Now</span>
-      </div>
+        <div class="swiper-slide feature-card">
+          <div class="feature-icon">🗓️</div>
+          <h3>GST Filing Calendar</h3>
+          <p>Auto-generates GSTR-1, GSTR-3B, and TDS due dates for every client. Track filed vs overdue at a glance.</p>
+          <span class="feature-live">✓ Live Now</span>
+        </div>
 
-      <div class="feature-card">
-        <div class="feature-icon">👥</div>
-        <h3>Staff Login + Role Control</h3>
-        <p>Add junior staff, assign specific clients. Staff see only what you allow. You stay in control even when out
-          of office.</p>
-        <span class="feature-live">✓ Live Now</span>
-      </div>
+        <div class="swiper-slide feature-card">
+          <div class="feature-icon">👥</div>
+          <h3>Staff Login + Role Control</h3>
+          <p>Add junior staff, assign specific clients. Staff see only what you allow. You stay in control even when out
+            of office.</p>
+          <span class="feature-live">✓ Live Now</span>
+        </div>
 
-      <div class="feature-card">
-        <div class="feature-icon">🛡️</div>
-        <h3>ITC Matching (Bill ↔ Bank)</h3>
-        <p>Matches every purchase bill against actual bank payments and tells you exactly which ITC is safe to claim,
-          reducing GST audit risk.</p>
-        <span class="feature-live">✓ Live Now</span>
-      </div>
+        <div class="swiper-slide feature-card">
+          <div class="feature-icon">🛡️</div>
+          <h3>ITC Matching (Bill ↔ Bank)</h3>
+          <p>Matches every purchase bill against actual bank payments and tells you exactly which ITC is safe to claim,
+            reducing GST audit risk.</p>
+          <span class="feature-live">✓ Live Now</span>
+        </div>
 
-      <div class="feature-card">
-        <div class="feature-icon">📋</div>
-        <h3>GSTR-2B Reconciliation</h3>
-        <p>Upload GSTR-2B JSON → flags Safe ITC ✅, At-Risk ⚠️, and Missing Bills 📋. ITC confidence in minutes, not
-          hours.</p>
-        <span class="feature-live">✓ Live Now</span>
-      </div>
+        <div class="swiper-slide feature-card">
+          <div class="feature-icon">📋</div>
+          <h3>GSTR-2B Reconciliation</h3>
+          <p>Upload GSTR-2B JSON → flags Safe ITC ✅, At-Risk ⚠️, and Missing Bills 📋. ITC confidence in minutes, not
+            hours.</p>
+          <span class="feature-live">✓ Live Now</span>
+        </div>
 
-      <div class="feature-card">
-        <div class="feature-icon">📣</div>
-        <h3>WhatsApp Reminder Engine</h3>
-        <p>One button → personalized WhatsApp reminders sent to every client who hasn't uploaded this month. Auto
-          follow-up. Coming very soon.</p>
-        <span class="feature-soon">⏳ Coming Soon</span>
-      </div>
+        <div class="swiper-slide feature-card">
+          <div class="feature-icon">📣</div>
+          <h3>WhatsApp Reminder Engine</h3>
+          <p>One button → personalized WhatsApp reminders sent to every client who hasn't uploaded this month. Auto
+            follow-up. Coming very soon.</p>
+          <span class="feature-soon">⏳ Coming Soon</span>
+        </div>
 
-      <div class="feature-card">
-        <div class="feature-icon">📊</div>
-        <h3>CA Practice Dashboard</h3>
-        <p>All clients. All statuses. One screen. See ITC %, pending uploads, filing deadlines for your entire practice
-          at once.</p>
-        <span class="feature-soon">⏳ Coming Soon</span>
-      </div>
+        <div class="swiper-slide feature-card">
+          <div class="feature-icon">📊</div>
+          <h3>CA Practice Dashboard</h3>
+          <p>All clients. All statuses. One screen. See ITC %, pending uploads, filing deadlines for your entire
+            practice
+            at once.</p>
+          <span class="feature-soon">⏳ Coming Soon</span>
+        </div>
 
-    </div>
+      </div> <!-- swiper-wrapper -->
+      <div class="swiper-pagination"></div>
+    </div> <!-- features-swiper -->
   </section>
 
   <!-- WHY NIRVISHA -->
@@ -1190,6 +1227,31 @@
     </p>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    var swiper = new Swiper(".features-swiper", {
+      effect: "coverflow",
+      grabCursor: true,
+      centeredSlides: true,
+      slidesPerView: "auto",
+      initialSlide: 1,
+      coverflowEffect: {
+        rotate: 0,
+        stretch: 50,
+        depth: 200,
+        modifier: 1,
+        slideShadows: false,
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      autoplay: {
+        delay: 3500,
+        disableOnInteraction: true,
+      }
+    });
+  </script>
   <script>
     // ── Scroll animations ──
     const observer = new IntersectionObserver((entries) => {
